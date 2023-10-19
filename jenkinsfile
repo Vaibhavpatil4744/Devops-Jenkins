@@ -1,0 +1,13 @@
+pipeline{
+    agent any
+    tools{
+        maven 'maven_3_5_0'
+    }
+    stages{
+        stage('Build maven')
+           steps{
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Vaibhavpatil4744/Devops-Jenkins']])
+               sh 'mvn clean install'
+           }
+    }
+}
